@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Registration Form</h1>
+        <form id="registrationForm" novalidate>
+            <div class="form-group">
+                <label for="firstName">First Name <span class="required">*</span></label>
+                <input 
+                    type="text" 
+                    id="firstName" 
+                    name="firstName" 
+                    required 
+                    aria-required="true"
+                    aria-describedby="firstNameError"
+                >
+                <div id="firstNameError" class="error-message">Please enter your first name</div>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name <span class="required">*</span></label>
+                <input 
+                    type="text" 
+                    id="lastName" 
+                    name="lastName" 
+                    required 
+                    aria-required="true"
+                    aria-describedby="lastNameError"
+                >
+                <div id="lastNameError" class="error-message">Please enter your last name</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email <span class="required">*</span></label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required 
+                    aria-required="true"
+                    aria-describedby="emailError"
+                >
+                <div id="emailError" class="error-message">Please enter a valid email address</div>
+            </div>
+
+            <div class="form-group">
+                <label class="group-label" id="gender-label">Gender</label>
+                <div class="radio-group" role="radiogroup" aria-labelledby="gender-label">
+                    <div class="radio-item">
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Male</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="other" name="gender" value="other">
+                        <label for="other">Other</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date Of Birth</label>
+                <input 
+                    type="date" 
+                    id="dob" 
+                    name="dob" 
+                    step="1"
+                >
+            </div>
+
+            <section class="address-section">
+                <h2 class="section-title">Address</h2>
+                <div class="form-group">
+                    <label for="address1">Address Line 1 <span class="required">*</span></label>
+                    <input 
+                        type="text" 
+                        id="address1" 
+                        name="address1" 
+                        required 
+                        aria-required="true"
+                        aria-describedby="address1Error"
+                        placeholder="Street address, P.O. box, Company name"
+                    >
+                    <div id="address1Error" class="error-message">Please enter your address</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="address2">Address Line 2</label>
+                    <input 
+                        type="text" 
+                        id="address2" 
+                        name="address2" 
+                        placeholder="Apartment, suite, unit, building, floor, etc."
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="pincode">Pin Code</label>
+                    <input 
+                        type="text" 
+                        id="pincode" 
+                        name="pincode" 
+                        pattern="[0-9]{6}"
+                        maxlength="6"
+                        inputmode="numeric"
+                        placeholder="Enter 6-digit pin code"
+                        aria-describedby="pincodeMessage"
+                    >
+                    <div id="pincodeMessage" class='success-msg' aria-live="polite"></div>
+                </div>
+
+                <div class="form-group">
+                     <label for="country">Country</label>
+                     <select 
+                        id="country" 
+                        name="country"
+                    >
+                        <option value="">Select a country</option>
+                        <option value="IN">India</option>
+                        <option value="US">United States</option>
+                        <option value="GB">United Kingdom</option>
+                        <option value="CA">Canada</option>
+                        <option value="AU">Australia</option>
+                        <option value="DE">Germany</option>
+                        <option value="FR">France</option>
+                        <option value="JP">Japan</option>
+                        <option value="CN">China</option>
+                        <option value="BR">Brazil</option>
+                    </select>                     
+                </div>
+            </section>
+
+            <div class="form-group">
+                <label for="password">Password <span class="required">*</span></label>
+                <div class="password-container">
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        required 
+                        aria-required="true"
+                        aria-describedby="passwordRequirements passwordError"
+                        minlength="8"
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                    >
+                    <button 
+                        type="button" 
+                        class="password-toggle" 
+                        aria-label="Show Passowrd"
+                        onclick="togglePassword()"
+                    >
+                        Show
+                    </button>
+                </div>
+                <div id="passwordError" class="error-message">Please enter a valid password</div>
+                <div id="passwordRequirements" class="password-requirements">
+                    <div class="requirement" data-requirement="length" aria-hidden="false">
+                        <span class="requirement-icon" >○</span>
+                        At least 8 characters
+                    </div>
+                    <div class="requirement" data-requirement="uppercase" aria-hidden="false">
+                        <span class="requirement-icon" >○</span>
+                        At least one uppercase letter
+                    </div>
+                    <div class="requirement" data-requirement="lowercase" aria-hidden="false">
+                        <span class="requirement-icon">○</span>
+                        At least one lowercase letter
+                    </div>
+                    <div class="requirement" data-requirement="number" aria-hidden="false">
+                        <span class="requirement-icon">○</span>
+                        At least one number
+                    </div>
+                    <div class="requirement" data-requirement="special" aria-hidden="false">
+                        <span class="requirement-icon">○</span>
+                        At least one special character (@$!%*?&)
+                    </div>
+                </div>
+            </div>
+
+            <div class="terms-container">
+                <div class="terms-checkbox">
+                    <input 
+                        type="checkbox" 
+                        id="termsAgreement" 
+                        name="termsAgreement" 
+                    >
+                    <label for="termsAgreement">
+                       <span id="terms-msg">I agree to the Terms and Policy</span> 
+                        <button 
+                            type="button" 
+                            class="info-button" 
+                            id="infoButton"
+                            aria-labelledby="infoTooltip"
+                        >i</button>
+                    </label>
+                </div>
+                <div class="info-tooltip" id="infoTooltip">
+                    <p>This registration form is designed to be accessible to all users, including those using screen readers and keyboard navigation. We follow WCAG 2.1 guidelines to ensure a better user experience for everyone.</p>
+                </div>
+            </div>
+
+            <button type="submit" id="submitBtn">Submit</button>
+
+            <a href="./forgotPass.html" target="_blank" id="forgotPass" class="forgotPass">Forgot Password?</a>
+        </form>
+    </div>
+
+    <script src="./script.js"></script></body>
+</html>
