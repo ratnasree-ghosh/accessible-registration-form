@@ -126,7 +126,6 @@ document.getElementById('password').addEventListener('input', function(e) {
     document.getElementById('passwordError').style.display = hasError ? 'block' : 'none';
 });
 
-// Terms and Policy Tooltip
 const termsCheckbox = document.getElementById('termsAgreement');
 const infoButton = document.getElementById('infoButton');
 const infoTooltip = document.getElementById('infoTooltip');
@@ -183,30 +182,3 @@ const pincodeInput = document.getElementById("pincode");
             messageDiv.innerHTML = "";
         }
     });
-
-
-    const elements = {
-        button: document.querySelector('[role="combobox"]'),
-        dropdown: document.querySelector('[role="listbox"]'),
-      }; // I like to group all my elements into one objects 🤓.
-      let isDropdownOpen = false;
-      
-      const toggleDropdown = () => {
-        elements.dropdown.classList.toggle('active');
-        isDropdownOpen = !isDropdownOpen;
-        elements.button.setAttribute('aria-expanded', isDropdownOpen.toString()); // update the aria-expanded state
-      };
-      
-      const handleKeyPress = (event) => {
-         event.preventDefault();
-        const { key } = event;
-        const openKeys = ['Enter', ' '];
-      
-        if (openKeys.includes(key)) {
-          toggleDropdown();
-        }
-      };
-      
-      elements.button.addEventListener('keydown', handleKeyPress);
-      elements.button.addEventListener('click', toggleDropdown);
-      
