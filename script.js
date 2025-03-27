@@ -47,8 +47,13 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     if (hasError) {
         firstErrorField.focus();
     } else {
-        alert('Registration successful!');
+        const formStatus = document.getElementById('formStatus');
+        formStatus.textContent = 'Registration successful!';
         this.reset();
+        
+        setTimeout(() => {
+            formStatus.textContent = '';
+        }, 5000);
     }
 });
 

@@ -295,11 +295,20 @@ button:focus {
     color: #45a049;
 }
 
+.form-status {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
 
-
-
-
-
+.form-status:not(:empty) {
+    opacity: 1;
+}
 
 .form {
     margin: 1.2rem 0;
